@@ -33,6 +33,13 @@ int main() {
       ans += ceil((double)cnt/2);
 
       cout<<ans<<endl;
+
+
+      // T.C = O(N + k)
+
+      // If We ignore the input's Complexity, then it would be
+
+      // T.C = O(k), S.C = O(k)
       
     
   return 0;
