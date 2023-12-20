@@ -55,18 +55,30 @@ int main() {
 
   if (s >= n-1){
 
-    ll low = 0, high = k-1;
+    ll low = 1, high = k-1;
 
     while (low <= high){
       ll mid = low + (high-low)/2;
 
       ll p = s - sum(mid);
 
-      if (p >= n-1){
-        low = mid + 1;
+      if (p == n){
+        cout<<k-1-mid<<endl;
+        return 0;
+      }
+
+      if (p < n-1){
+        high = mid - 1;
       }
       else{
-        high = mid - 1;
+        ll pp = s - sum(mid-1);
+        if (pp >= n-1 && p < n-1){
+          cout<<k-mid<<endl;
+          return 0;
+        }
+        else{
+          low = mid + 1;
+        }
       }
     }
 
