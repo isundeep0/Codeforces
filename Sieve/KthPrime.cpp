@@ -4,6 +4,8 @@ typedef long long int ll;
 
 #define pr(a) cout<<a<<endl;
 
+//optimized Sieve
+
 int main() {
 
   vector<int> v; 
