@@ -14,7 +14,9 @@ int main()
     int a, b;
     cin>>a>>b;
 
-    if ((a&1 && b&1) || min(a, b)*2 == max(a, b)){
+    if (a > b) swap(a, b);
+
+    if ((a&1 && b&1) || ((a&1 || b&1) && (a*2 == b))){
       pr("NO");
     }
     else{
