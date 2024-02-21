@@ -17,8 +17,6 @@ int main()
     int ans = 0;
 
     map<int, int> mp;
-
-
     
     for (int i = 0; i<n; i++){
 
