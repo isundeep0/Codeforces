@@ -26,7 +26,7 @@ public:
 
   void insert(int x){
     Node* node = root;
-    for (int i = 31; i>=0; i--){
+    for (int i = 63; i>=0; i--){
       int bit = ((x>>i)&1);
       if (!node->children[bit]){
         node->children[bit] = new Node();
@@ -39,7 +39,7 @@ public:
   int subArrayCount(int x, int k){
     Node* node = root;
     int big = 0, equal = 0;
-    for (int i = 31; i>=0; i--){
+    for (int i = 63; i>=0; i--){
       int xbit = ((x>>i)&1);
       int kbit = ((k>>i)&1);
 
