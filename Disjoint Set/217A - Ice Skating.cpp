@@ -1,6 +1,9 @@
 //
 // Created by isund on 11-03-2024.
 //
+//
+// Created by isund on 06-03-2024.
+//
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -11,11 +14,13 @@ typedef pair<int, int> pi;
 #define s second
 #define pb push_back
 #define FOR(i, a, n) for (int i = a; i<n; i++)
+#define FORR(i, n) for (int i = n; i>=0; i--)
 #define pr(a) cout << a << endl;
 #define in(a) cin>>a;
-#define ps(a) cout << a << " ";
+#define ps(a) cout << a;
 #define all(v) v.begin(), v.end()
-#define printVector(v) copy(all(v), ostream_iterator<int>(cout, " ")), cout<<"\n"
+#define printVector(v) copy(all(v), ostream_iterator<int>(cout, " "))
+int mod = 1e9 + 7;
 
 void init() {
     ios::sync_with_stdio(0);
@@ -62,47 +67,56 @@ public:
         }
     }
 
-    void primt(){
-        printVector(par);
+    int getComponents(){
+        int cnt = 0;
+        FOR(i, 0, par.size()-1){
+            if (par[i] == i){
+                ++cnt;
+            }
+        }
+        return cnt;
     }
+
+
 
 };
 
 int main() {
+
     init();
 
-    DisjointSet d = DisjointSet(7);
+//    int t;
+//    cin >> t;
+//
+//    while (t--) {
 
-    d.unionByRank(1, 2);
-    d.unionByRank(2, 3);
-    d.unionByRank(4, 5);
-    d.unionByRank(6, 7);
-    d.unionByRank(5, 6);
-    d.unionByRank(3, 7);
+    int n;
+    cin>>n;
 
-    d.primt();
-    cout<<"\n";
+    DisjointSet d = DisjointSet(n);
 
-    cout<<d.findParent(7)<<endl;
+    vector<pair<int, int>> vp(n, pair<int, int>());
 
-    d.primt();
+    FOR(i, 0, n){
+        cin>>vp[i].first>>vp[i].second;
+    }
 
-    cout<<"\n";
+    // [[1, 2], [1, 4], [1, 6]]
 
-    cout<<d.findParent(6)<<endl;
+    FOR(i, 0, n){
+        FOR(j, i+1, n){
+            if (vp[i].second == vp[j].second || vp[i].first == vp[j].first){
+                d.unionByRank(i, j);
+            }
+        }
+    }
 
-    d.primt();
-
-    cout<<"\n";
-
-    cout<<d.findParent(7)<<endl;
-
-    d.primt();
-
-
+    pr(d.getComponents()-1);
 
 
 
+//    }
 
+    return 0;
 }
 
